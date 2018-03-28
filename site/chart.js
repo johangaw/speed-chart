@@ -1,5 +1,7 @@
 'use strict';
 
+// TODO use SPEED_CHART_DATA as data
+
 function formatDate(date) {
   var mm = date.getMonth() + 1; // getMonth() is zero-based
   var dd = date.getDate();

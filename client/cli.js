@@ -38,7 +38,7 @@ function runTest() {
 
 function saveData(upSpeed, downSpeed) {
   const now = new Date();
-  const dataFile = path.join(__dirname, 'data.csv');
+  const dataFile = path.join(__dirname, '..', 'data', 'raw.csv');
   const prefix = fs.existsSync(dataFile) ? '' : 'Time,Upload speed,Download speed\n'
   const line = `${prefix}${now.getTime()},${upSpeed},${downSpeed}\n`;
   return new Promise((resolve, reject) => {
