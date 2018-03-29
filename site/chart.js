@@ -35,7 +35,7 @@ c3.generate({
   },
   tooltip: {
     format: {
-      title: function (date) { return formatDate(date); },
+      title: (date) => formatDate(date)
     }
   }
 })
