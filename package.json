@@ -5,11 +5,13 @@
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "process": "node data/process-data.js"
+    "process": "node data/process-data.js",
+    "client": "node client/cli.js"
   },
   "author": "Johan Gustavsson",
   "license": "ISC",
   "dependencies": {
+    "minimist": "^1.2.0",
     "speedtest-net": "^1.4.2"
   },
   "devDependencies": {

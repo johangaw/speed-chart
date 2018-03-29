@@ -1,25 +1,23 @@
 const fs = require('fs')
 const path = require('path')
 const speedTest = require('speedtest-net')
+const minimist = require('minimist')
 
 const TIMES = {
+  TEN_MINUTES: 10 * 60 * 1000,
   ONE_MINUTE: 60 * 1000,
   TEN_SECONDS: 10 * 1000,
   FIVE_SECONDS: 5 * 1000
 }
 
-const RUNS = 1;
+const argv = minimist(process.argv.slice(2), {default: {intervall: 1}})
+const min2ms = (minute) => minute * 60 * 1000
 
-(async function () {
-  console.log('Running...')
-  for (let run = 1; run <= RUNS; run++) {
-    console.log(run)
-    await runTest()
-    console.log(run + ' done!')
-  }
-})()
+runTest()
+setInterval(runTest, min2ms(argv.intervall))
 
 function runTest () {
+  console.log('running...')
   return new Promise((resolve, reject) => {
     const test = speedTest({ maxTime: TIMES.FIVE_SECONDS })
     test.on('data', data => {
