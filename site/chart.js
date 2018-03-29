@@ -1,26 +1,25 @@
-'use strict';
+'use strict'
+/* global c3 SPEED_CHART_TIMES SPEED_CHART_UPLOAD SPEED_CHART_DOWNLOAD */
 
-// TODO use SPEED_CHART_DATA as data
+function formatDate (date) {
+  var mm = date.getMonth() + 1 // getMonth() is zero-based
+  var dd = date.getDate()
 
-function formatDate(date) {
-  var mm = date.getMonth() + 1; // getMonth() is zero-based
-  var dd = date.getDate();
+  const zeroPadded = (number) => (number > 9 ? '' : '0') + number
 
-  const zeroPadded = (number) => (number > 9 ? '' : '0') + number;
+  const dateSting = [date.getFullYear(), mm, dd].map(zeroPadded).join('-')
+  const timeSting = [date.getHours(), date.getMinutes(), date.getSeconds()].map(zeroPadded).join(':')
 
-  const dateSting = [date.getFullYear(), mm, dd].map(zeroPadded).join('-');
-  const timeSting = [date.getHours(), date.getMinutes(), date.getSeconds()].map(zeroPadded).join(':');
-
-  return dateSting + ' ' + timeSting;
+  return dateSting + ' ' + timeSting
 }
 
-var chart = c3.generate({
+c3.generate({
   data: {
     x: 'x',
     columns: [
-      ['x', '2010-03-22', '2010-03-23', '2010-03-24', '2010-03-25', '2010-03-26', '2010-03-27', '2010-03-28', '2010-03-29', '2010-03-30', '2010-04-01', '2010-04-02', '2010-04-03', '2010-04-04'],
-      ['data1', 400, 150, 250, 600, 700, 800, 900, 1000, 1100, 1101, 1102, 1103, 1104],
-      ['data2', 300, 250, 450, 400, 700, 800, 900, 1000, 1100, 1101, 1102, 1103, 1104]
+      ['x'].concat(SPEED_CHART_TIMES),
+      ['download speed'].concat(SPEED_CHART_DOWNLOAD),
+      ['upload speed'].concat(SPEED_CHART_UPLOAD)
     ]
   },
   axis: {
@@ -29,6 +28,9 @@ var chart = c3.generate({
       tick: {
         format: '%Y-%m-%d'
       }
+    },
+    y: {
+      label: 'Mb/s'
     }
   },
   tooltip: {
@@ -36,4 +38,4 @@ var chart = c3.generate({
       title: function (date) { return formatDate(date); },
     }
   }
-});
+})
