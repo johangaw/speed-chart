@@ -26,7 +26,7 @@ function parseLine (line) {
 }
 
 function jsVarFromArray (varName, array) {
-  return `const ${varName} = [${times.join(', ')}] // eslint-disable-line no-unused-vars`
+  return `const ${varName} = [${array.join(', ')}] // eslint-disable-line no-unused-vars`
 }
 
 function formatOutput () {
@@ -34,7 +34,7 @@ function formatOutput () {
     "'use strict'",
     jsVarFromArray('SPEED_CHART_TIMES', times),
     jsVarFromArray('SPEED_CHART_UPLOAD', upload),
-    jsVarFromArray('SPEED_CHART_DOWNLOAD', download),
+    jsVarFromArray('SPEED_CHART_DOWNLOAD', download)
   ].join('\n') + '\n'
   fs.writeFile(PROCESSED_DATA_PATH, content, function (err) {
     if (err) throw err
