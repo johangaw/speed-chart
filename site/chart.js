@@ -1,6 +1,8 @@
 'use strict'
 /* global c3 SPEED_CHART_TIMES SPEED_CHART_UPLOAD SPEED_CHART_DOWNLOAD */
 
+// import c3 from 'c3';
+
 function formatDate (date) {
   var mm = date.getMonth() + 1 // getMonth() is zero-based
   var dd = date.getDate()

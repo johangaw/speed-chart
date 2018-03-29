@@ -11,6 +11,8 @@
   "author": "Johan Gustavsson",
   "license": "ISC",
   "dependencies": {
+    "c3": "^0.5.1",
+    "d3": "^5.0.0",
     "minimist": "^1.2.0",
     "speedtest-net": "^1.4.2"
   },
