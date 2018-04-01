@@ -1,5 +1,5 @@
 *.log
 node_modules/
 .vscode/
-data/*.csv
-data/data.js
+app/data/*.csv
+app/data/data.js
