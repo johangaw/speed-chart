@@ -5,7 +5,7 @@
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "process": "node data/process-data.js",
+    "process": "node data/process-cli.js",
     "client": "node app/client/cli.js",
     "start:dev:be": "nodemon app/server/server.js",
     "start:dev:fe": "webpack-dev-server",
@@ -27,6 +27,7 @@
   "devDependencies": {
     "clean-webpack-plugin": "^0.1.19",
     "concurrently": "^3.5.1",
+    "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.9.0",
@@ -35,6 +36,7 @@
     "eslint-plugin-standard": "^3.0.1",
     "html-webpack-plugin": "^3.1.0",
     "nodemon": "^1.17.3",
+    "style-loader": "^0.20.3",
     "webpack": "^4.4.1",
     "webpack-cli": "^2.0.13",
     "webpack-dev-server": "^3.1.1"

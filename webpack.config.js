@@ -5,6 +5,16 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 module.exports = {
   entry: path.join(__dirname, 'app', 'site', 'js', 'index.js'),
   mode: 'development',
+
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ]
+      }
+    ]
+  },
+
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
