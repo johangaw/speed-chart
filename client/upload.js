@@ -16,6 +16,4 @@ function sendData (timeStamp, upSpeed, downSpeed) {
   })
 }
 
-sendData(1000, 1000, 1000).then((resp) => console.log(resp))
-
 module.exports.sendData = sendData
