@@ -2,10 +2,11 @@ const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
 const insertDatapoint = require('./databse').insertDatapoint
+const PRODUCTION = require('../config/node-config').PRODUCTION
 
 const app = express()
 
-if (process.env.PRODUCTION) {
+if (PRODUCTION) {
   app.use('/', express.static(path.join(__dirname, '..', 'dist')))
 }
 

@@ -1,8 +1,8 @@
 const fetch = require('node-fetch')
-const API_URL = process.env.API_URL || 'http://localhost:3000'
+const API = require('../config/node-config').API
 
 function sendData (timeStamp, upSpeed, downSpeed) {
-  const url = `${API_URL}/api/v1/datapoint`
+  const url = `${API.URL}/api/v1/datapoint`
   return fetch(url, {
     method: 'POST',
     headers: {
