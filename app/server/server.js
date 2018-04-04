@@ -2,7 +2,7 @@ const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
 const {insertDatapoint, getAllDatapoints} = require('./databse')
-const {PRODUCTION, PROJECT_ROOT} = require('../config/node-config')
+const {PRODUCTION, PROJECT_ROOT, API} = require('../config/node-config')
 
 const app = express()
 
@@ -28,4 +28,4 @@ app.get('/api/v1/datapoint', (req, res) => {
   )
 })
 
-app.listen(3000, () => console.log('Example app listening on port 3000!'))
+app.listen(API.PORT, () => console.log(`Up and running on port ${API.PORT}!`))

@@ -1,7 +1,10 @@
 const path = require('path')
 
+const PORT = process.env.PORT || 3000
+
 const API = {
-  URL: process.env.API_URL || 'http://localhost:3000'
+  PORT: PORT,
+  URL: process.env.API_URL || `http://localhost:${PORT}`
 }
 
 const DATABASE = {
