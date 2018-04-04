@@ -3,3 +3,4 @@ node_modules/
 .vscode/
 app/data/*.csv
 app/data/data.js
+dist/

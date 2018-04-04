@@ -4,7 +4,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
   entry: path.join(__dirname, 'app', 'site', 'js', 'index.js'),
-  mode: 'development',
+  mode: process.env.NODE_ENV || 'development',
 
   module: {
     rules: [
