@@ -1,3 +1,5 @@
+const path = require('path')
+
 const API = {
   URL: process.env.API_URL || 'http://localhost:3000'
 }
@@ -10,6 +12,8 @@ const DATABASE = {
   }
 }
 
+const PROJECT_ROOT = path.join(__dirname, '..', '..')
+
 const PRODUCTION = process.env.PRODUCTION || false
 
 const TIMES = {
@@ -20,4 +24,4 @@ const TIMES = {
   ONE_SECOND: 1000
 }
 
-module.exports = {DATABASE, PRODUCTION, TIMES, API}
+module.exports = {DATABASE, PRODUCTION, TIMES, API, PROJECT_ROOT}
