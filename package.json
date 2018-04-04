@@ -10,10 +10,11 @@
     "start:dev:be": "nodemon app/server/server.js",
     "start:dev:fe": "webpack-dev-server",
     "start:dev": "concurrently --kill-others \"npm run start:dev:be\" \"npm run start:dev:fe\"",
+    "start": "node app/server/server.js",
     "build": "webpack"
   },
   "author": "Johan Gustavsson",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.2",
     "c3": "^0.5.1",
@@ -40,5 +41,8 @@
     "webpack": "^4.4.1",
     "webpack-cli": "^2.0.13",
     "webpack-dev-server": "^3.1.1"
+  },
+  "engines": {
+    "node": "v8.11.0"
   }
 }

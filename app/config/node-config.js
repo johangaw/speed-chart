@@ -14,7 +14,7 @@ const DATABASE = {
 
 const PROJECT_ROOT = path.join(__dirname, '..', '..')
 
-const PRODUCTION = process.env.PRODUCTION || false
+const PRODUCTION = process.env.NODE_ENV === 'production'
 
 const TIMES = {
   TEN_MINUTES: 10 * 60 * 1000,
