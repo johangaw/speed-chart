@@ -9,16 +9,16 @@ const argv = minimist(process.argv.slice(2), {default: {intervall: 1}})
 const min2ms = (minute) => minute * 60 * 1000
 
 runTest()
-setInterval(runTest, min2ms(argv.intervall))
+setInterval(runTest, min2ms(argv.intervall), argv.key)
 
-function runTest () {
+function runTest (key) {
   console.log('running...')
   return new Promise((resolve, reject) => {
     const test = speedTest({ maxTime: TIMES.FIVE_SECONDS })
     test.on('data', data => {
       const timeStamp = new Date()
       resolve(saveData(timeStamp, data.speeds.upload, data.speeds.download))
-      sendData(timeStamp, data.speeds.upload, data.speeds.download)
+      sendData(key, timeStamp, data.speeds.upload, data.speeds.download)
     })
     test.on('error', err => {
       reject(err)

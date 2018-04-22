@@ -43,7 +43,12 @@ function showSpeedChart (timestamps, downloadSpeeds, uploadSpeeds) {
   })
 }
 
-fetch('/api/v1/datapoint', {method: 'GET'}).then(async (res) => {
+function getKey () {
+  const url = new URL(window.location.href)
+  return url.searchParams.get('key')
+}
+
+fetch('/api/v1/datapoints/' + getKey(), {method: 'GET'}).then(async (res) => {
   const items = await res.json()
   const collector = new Collector()
   items.forEach((item) => collector.collect(item.timeStamp, item.upSpeed, item.downSpeed))

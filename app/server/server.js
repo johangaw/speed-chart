@@ -1,7 +1,7 @@
 const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
-const {insertDatapoint, getAllDatapoints} = require('./databse')
+const {insertDatapoint, getDatapoints} = require('./databse')
 const {PRODUCTION, PROJECT_ROOT, API} = require('../config/node-config')
 
 const app = express()
@@ -13,16 +13,16 @@ if (PRODUCTION) {
 app.use(bodyParser.json())
 
 app.post('/api/v1/datapoint', (req, res) => {
-  const {timeStamp, upSpeed, downSpeed} = req.body
-  insertDatapoint(timeStamp, upSpeed, downSpeed)
+  const {key, timeStamp, upSpeed, downSpeed} = req.body
+  insertDatapoint(key, timeStamp, upSpeed, downSpeed)
     .then(
       () => res.status(201).json({success: true}),
       (err) => res.status(500).json({success: false, error: err})
     )
 })
 
-app.get('/api/v1/datapoint', (req, res) => {
-  getAllDatapoints().then(
+app.get('/api/v1/datapoints/:key', (req, res) => {
+  getDatapoints({key: req.params.key}).then(
     (datapoints) => res.status(200).json(datapoints),
     (err) => res.status(500).json({success: false, error: err})
   )
