@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "process": "node data/process-cli.js",
-    "client": "node app/client/cli.js",
+    "client": "node app/client/cli.js --key=dev --intervall=0.5",
     "start:dev:be": "nodemon app/server/server.js",
     "start:dev:fe": "webpack-dev-server",
     "start:dev": "concurrently --kill-others \"npm run start:dev:be\" \"npm run start:dev:fe\"",
