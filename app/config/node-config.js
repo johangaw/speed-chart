@@ -15,6 +15,13 @@ const DATABASE = {
   }
 }
 
+const AUTH = {
+  ACCEPTED_KEYS: (process.env.ACCEPTED_KEYS || '')
+    .split(',')
+    .map(key => key.trim())
+    .filter(key => key.length > 0)
+}
+
 const PROJECT_ROOT = path.join(__dirname, '..', '..')
 
 const PRODUCTION = process.env.NODE_ENV === 'production'
@@ -27,4 +34,4 @@ const TIMES = {
   ONE_SECOND: 1000
 }
 
-module.exports = {DATABASE, PRODUCTION, TIMES, API, PROJECT_ROOT}
+module.exports = {DATABASE, PRODUCTION, TIMES, API, PROJECT_ROOT, AUTH}
