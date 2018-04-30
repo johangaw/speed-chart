@@ -14,6 +14,10 @@
     "build": "webpack",
     "postinstall": "node postinstall.js"
   },
+  "bin": {
+    "speed-chart-server": "./app/server/server.js",
+    "speed-chart-client": "./app/client/cli.js"
+  },
   "author": "Johan Gustavsson",
   "license": "MIT",
   "dependencies": {
