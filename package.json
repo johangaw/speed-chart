@@ -12,7 +12,7 @@
     "start:dev": "concurrently --kill-others \"npm run start:dev:be\" \"npm run start:dev:fe\"",
     "start": "node app/server/server.js",
     "build": "webpack",
-    "postinstall": "node postinstall.js"
+    "prepublish": "npm run build"
   },
   "bin": {
     "speed-chart-server": "./app/server/server.js",
