@@ -20,8 +20,16 @@ function createVariableFile (collector, outputPath) {
   })
 }
 
+function createCSVWithLocalDates (collector, outputPath) {
+  fs.writeFileSync(outputPath, 'Time\tUpload speed\tDownload speed\n')
+  collector.times.forEach((time, index) => {
+    fs.appendFileSync(outputPath, `${time.toLocaleString()}\t${collector.upload[index]}\t${collector.download[index]}\n`)
+  })
+}
+
 const rawDataPath = path.join(__dirname, 'raw.csv')
 const outputPath = path.join(__dirname, 'data.js')
+const outputPathCSV = path.join(__dirname, 'data.csv')
 const collector = new Collector()
 
 console.log('processing...')
@@ -33,7 +41,10 @@ const lineReader = readline.createInterface({
 lineReader.on('line', (line) => {
   const [timeStamp, uploadSpeed, downloadSpeed] = line.split(',')
   if (isNaN(timeStamp) || isNaN(uploadSpeed) || isNaN(downloadSpeed)) return
-  collector.collect(timeStamp, uploadSpeed, downloadSpeed)
+  collector.collect(Number(timeStamp), Number(uploadSpeed), Number(downloadSpeed))
 })
 
-lineReader.on('close', () => createVariableFile(collector, outputPath))
+lineReader.on('close', () => {
+  createVariableFile(collector, outputPath)
+  createCSVWithLocalDates(collector, outputPathCSV)
+})

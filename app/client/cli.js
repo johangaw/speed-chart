@@ -4,7 +4,6 @@ const fs = require('fs')
 const path = require('path')
 const speedTest = require('speedtest-net')
 const minimist = require('minimist')
-const sendData = require('./upload').sendData
 const {TIMES} = require('../config/node-config')
 
 const argv = minimist(process.argv.slice(2), {default: {intervall: 1}})
@@ -21,14 +20,16 @@ function runTest (key) {
     test.on('data', data => {
       const timeStamp = new Date()
       Promise.all([
-        saveData(timeStamp, data.speeds.upload, data.speeds.download),
-        sendData(key, timeStamp, data.speeds.upload, data.speeds.download)
+        saveData(timeStamp, data.speeds.upload, data.speeds.download)
+
+        // Disable this for now..
+        // sendData(key, timeStamp, data.speeds.upload, data.speeds.download)
       ]).then((results) => resolve(results))
     })
     test.on('error', err => {
       reject(err)
     })
-  }).then((data) => console.log('success: ' + data), (err) => console.log('error: ' + err))
+  }).then(() => console.log('success'), (err) => console.log('error: ' + err))
 }
 
 function saveData (timeStamp, upSpeed, downSpeed) {

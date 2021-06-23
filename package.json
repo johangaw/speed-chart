@@ -5,7 +5,7 @@
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "process": "node data/process-cli.js",
+    "process": "node app/data/process-cli.js",
     "client": "node app/client/cli.js --key=dev --intervall=0.5",
     "start:dev:be": "nodemon app/server/server.js",
     "start:dev:fe": "webpack-dev-server",
@@ -48,6 +48,6 @@
     "webpack-dev-server": "^3.1.1"
   },
   "engines": {
-    "node": "v8.11.0"
+    "node": "v14.15.0"
   }
 }
